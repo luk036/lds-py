@@ -1,0 +1,10 @@
+name: pylds
+channels:
+  - conda-forge
+dependencies:
+  - pytest
+  - pytest-cov
+  - pytest-benchmark
+  - numpy
+  - numexpr
+  - scipy
