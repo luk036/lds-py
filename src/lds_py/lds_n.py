@@ -31,6 +31,7 @@ class HaltonN:
         [0.5625, 0.037037037037037035, 0.8400000000000001]
         [0.3125, 0.37037037037037035, 0.08]
     """
+
     vdcs: List[Vdcorput]
 
     def __init__(self, n: int, base: List[int]):
@@ -82,6 +83,7 @@ class CylinN:
         [0.25785911461779826, -0.09489453780287567, 0.2548250428610497, -0.9186636496752051, 0.125]
         [0.1530772608880413, -0.46104432024542363, -0.7520753180038667, -0.24033976578550764, -0.375]
     """
+
     vdc: Vdcorput
 
     def __init__(self, n: int, base: List[int]):
@@ -129,10 +131,10 @@ def get_tp(n: int) -> np.ndarray:
     if n == 0:
         return X
     if n == 1:
-        return NEG_COSINE;
+        return NEG_COSINE
     tp_minus2 = get_tp(n - 2)  # NOQA
     return ne.evaluate("((n - 1) * tp_minus2 + NEG_COSINE * SINE**(n - 1)) / n")
- 
+
 
 class Sphere3:
     """Sphere3 sequence generator
@@ -154,6 +156,7 @@ class Sphere3:
         [-0.3173613919107008, 0.2014036636020021, -0.9214383378738055, -0.09833463636253847]
         [0.443988803653532, 0.8076126357141739, -0.24739479977418324, 0.29905114263249766]
     """
+
     vdc: Vdcorput
     sphere2: Sphere
 
@@ -190,6 +193,7 @@ class Sphere3:
 
 # SphereVaiant = Union[Sphere3, SphereN]
 
+
 class SphereN:
     """SphereN sequence generator
 
@@ -210,6 +214,7 @@ class SphereN:
         [0.37066313847851823, -0.1364074613325864, 0.3663017702120042, 0.8383599596078609, -0.08353103334636607]
         [0.16178258849951696, -0.4872633800055925, -0.7948449755855819, 0.19826109691937244, 0.25556759340457186]
     """
+
     vdc: Vdcorput
     n: int
 
