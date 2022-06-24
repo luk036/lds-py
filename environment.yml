@@ -1,4 +1,4 @@
-name: pylds
+name: lds-py
 channels:
   - conda-forge
 dependencies:
