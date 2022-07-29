@@ -31,7 +31,7 @@ class Vdcorput:
         >>> vgen = Vdcorput(2)
         >>> vgen.reseed(0)
         >>> for _ in range(10):
-        ...     print("{}".format(vgen.pop()))
+        ...     print(vgen.pop())
         ...
         0.5
         0.25
@@ -83,7 +83,7 @@ class Halton:
         >>> hgen = Halton([2, 3])
         >>> hgen.reseed(0)
         >>> for _ in range(10):
-        ...     print("{}".format(hgen.pop()))
+        ...     print(hgen.pop())
         ...
         [0.5, 0.3333333333333333]
         [0.25, 0.6666666666666666]
@@ -135,7 +135,7 @@ class Circle:
         >>> cgen = Circle(2)
         >>> cgen.reseed(0)
         >>> for _ in range(2):
-        ...     print("{}".format(cgen.pop()))
+        ...     print(cgen.pop())
         ...
         [1.2246467991473532e-16, -1.0]
         [1.0, 6.123233995736766e-17]
@@ -177,7 +177,7 @@ class Sphere:
         >>> sgen = Sphere([2, 3])
         >>> sgen.reseed(0)
         >>> for _ in range(2):
-        ...     print("{}".format(sgen.pop()))
+        ...     print(sgen.pop())
         ...
         [0.8660254037844387, -0.4999999999999998, 0.0]
         [-0.7499999999999997, -0.4330127018922197, -0.5]
@@ -225,7 +225,7 @@ class Sphere3Hopf:
         >>> sgen = Sphere3Hopf([2, 3, 5])
         >>> sgen.reseed(0)
         >>> for _ in range(2):
-        ...     print("{}".format(sgen.pop()))
+        ...     print(sgen.pop())
         ...
         [-0.22360679774997885, 0.3872983346207417, 0.4472135954999573, 0.4472135954999573]
         [-0.3162277660168382, -0.547722557505166, 0.6708203932499367, 0.6708203932499367]
@@ -279,23 +279,23 @@ if __name__ == "__main__":
 
     vgen = Vdcorput(2)
     for _ in range(10):
-        print("{}".format(vgen.pop()))
+        print(vgen.pop())
 
     cgen = Circle(2)
     for _ in range(10):
-        print("{}".format(cgen.pop()))
+        print(cgen.pop())
 
     hgen = Halton(base)
     for _ in range(10):
-        print("{}".format(hgen.pop()))
+        print(hgen.pop())
 
     sgen = Sphere(base)
     for _ in range(10):
-        print("{}".format(sgen.pop()))
+        print(sgen.pop())
 
     s3fgen = Sphere3Hopf(base)
     for _ in range(10):
-        print("{}".format(s3fgen.pop()))
+        print(s3fgen.pop())
 
 
 # First 1000 prime numbers

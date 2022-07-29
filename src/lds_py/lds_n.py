@@ -18,7 +18,7 @@ class HaltonN:
         >>> hgen = HaltonN(3, [2, 3, 5])
         >>> hgen.reseed(0)
         >>> for _ in range(2):
-        ...     print("{}".format(hgen.pop()))
+        ...     print(hgen.pop())
         ...
         [0.5, 0.3333333333333333, 0.2]
         [0.25, 0.6666666666666666, 0.4]
@@ -62,7 +62,7 @@ class CylinN:
         >>> cgen = CylinN(3, [2, 3, 5, 7])
         >>> cgen.reseed(0)
         >>> for _ in range(1):
-        ...     print("{}".format(cgen.pop()))
+        ...     print(cgen.pop())
         ...
         [0.5896942325314937, 0.4702654580212986, -0.565685424949238, -0.33333333333333337, 0.0]
     """
@@ -126,7 +126,7 @@ class Sphere3:
         >>> sgen = Sphere3([2, 3, 5])
         >>> sgen.reseed(0)
         >>> for _ in range(1):
-        ...     print("{}".format(sgen.pop()))
+        ...     print(sgen.pop())
         ...
         [0.8966646826186098, 0.2913440162992141, -0.33333333333333337, 6.123233995736766e-17]
     """
@@ -175,7 +175,7 @@ class SphereN:
         >>> sgen = SphereN(3, [2, 3, 5, 7])
         >>> sgen.reseed(0)
         >>> for _ in range(1):
-        ...     print("{}".format(sgen.pop()))
+        ...     print(sgen.pop())
         ...
         [0.6031153874276115, 0.4809684718990214, -0.5785601510223212, 0.2649326520763179, 6.123233995736766e-17]
     """
