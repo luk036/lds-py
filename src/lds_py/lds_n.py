@@ -1,4 +1,4 @@
-from functools import cache
+from functools import lru_cache
 from math import cos, sin, sqrt
 from typing import List
 
@@ -104,7 +104,7 @@ NEG_COSINE: np.ndarray = -np.cos(X)
 SINE: np.ndarray = np.sin(X)
 
 
-@cache
+@lru_cache
 def get_tp(n: int) -> np.ndarray:
     """_summary_
 
