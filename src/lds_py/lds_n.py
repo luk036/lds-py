@@ -54,8 +54,7 @@ class HaltonN:
 
 # CylinVariant = Union[Circle, CylinN]
 
-
-class CylinN:
+class CylinN(Circle):
     """CylinN sequence generator
 
     Examples:
@@ -68,6 +67,7 @@ class CylinN:
     """
 
     vdc: Vdcorput
+    c_gen: Circle
 
     def __init__(self, n: int, base: List[int]):
         """_summary_
@@ -167,8 +167,7 @@ class Sphere3:
 
 # SphereVaiant = Union[Sphere3, SphereN]
 
-
-class SphereN:
+class SphereN(Sphere):
     """SphereN sequence generator
 
     Examples:
@@ -181,6 +180,7 @@ class SphereN:
     """
 
     vdc: Vdcorput
+    s_gen: Sphere
     n: int
 
     def __init__(self, n: int, base: List[int]):
@@ -191,8 +191,7 @@ class SphereN:
         """
         assert n >= 2
         self.vdc = Vdcorput(base[0])
-        s_gen = Sphere(base[1:3]) if n == 2 else SphereN(n - 1, base[1:])
-        self.s_gen = s_gen
+        self.s_gen = Sphere(base[1:3]) if n == 2 else SphereN(n - 1, base[1:])
         self.n = n
         tp = get_tp(n)
         self.range = tp[-1] - tp[0]
