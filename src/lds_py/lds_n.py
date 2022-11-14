@@ -26,7 +26,7 @@ class HaltonN:
 
     vdcs: List[Vdcorput]
 
-    def __init__(self, n: int, base: List[int]):
+    def __init__(self, n: int, base: List[int]) -> None:
         """_summary_
 
         Args:
@@ -42,7 +42,7 @@ class HaltonN:
         """
         return [vdc.pop() for vdc in self.vdcs]
 
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         """_summary_
 
         Args:
@@ -53,6 +53,7 @@ class HaltonN:
 
 
 # CylinVariant = Union[Circle, CylinN]
+
 
 class CylinN(Circle):
     """CylinN sequence generator
@@ -69,7 +70,7 @@ class CylinN(Circle):
     vdc: Vdcorput
     c_gen: Circle
 
-    def __init__(self, n: int, base: List[int]):
+    def __init__(self, n: int, base: List[int]) -> None:
         """_summary_
 
         Args:
@@ -89,7 +90,7 @@ class CylinN(Circle):
         sinphi = sqrt(1.0 - cosphi * cosphi)
         return [xi * sinphi for xi in self.c_gen.pop()] + [cosphi]
 
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         """_summary_
 
         Args:
@@ -134,7 +135,7 @@ class Sphere3:
     vdc: Vdcorput
     sphere2: Sphere
 
-    def __init__(self, base: List[int]):
+    def __init__(self, base: List[int]) -> None:
         """_summary_
 
         Args:
@@ -143,7 +144,7 @@ class Sphere3:
         self.vdc = Vdcorput(base[0])
         self.sphere2 = Sphere(base[1:3])
 
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         """_summary_
 
         Args:
@@ -167,6 +168,7 @@ class Sphere3:
 
 # SphereVaiant = Union[Sphere3, SphereN]
 
+
 class SphereN(Sphere):
     """SphereN sequence generator
 
@@ -183,7 +185,7 @@ class SphereN(Sphere):
     s_gen: Sphere
     n: int
 
-    def __init__(self, n: int, base: List[int]):
+    def __init__(self, n: int, base: List[int]) -> None:
         """_summary_
 
         Args:
@@ -209,7 +211,7 @@ class SphereN(Sphere):
         sinphi = sin(xi)
         return [xi * sinphi for xi in self.s_gen.pop()] + [cos(xi)]
 
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         """_summary_
 
         Args:

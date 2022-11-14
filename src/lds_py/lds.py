@@ -48,7 +48,7 @@ class Vdcorput:
     count: int
     base: int
 
-    def __init__(self, base: int = 2):
+    def __init__(self, base: int = 2) -> None:
         """_summary_
 
         Args:
@@ -67,7 +67,7 @@ class Vdcorput:
         return vdc(self.count, self.base)
 
     # [allow(dead_code)]
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         """_summary_
 
         Args:
@@ -100,7 +100,7 @@ class Halton:
     vdc0: Vdcorput
     vdc1: Vdcorput
 
-    def __init__(self, base: List[int]):
+    def __init__(self, base: List[int]) -> None:
         """_summary_
 
         Args:
@@ -118,7 +118,7 @@ class Halton:
         return [self.vdc0.pop(), self.vdc1.pop()]
 
     # [allow(dead_code)]
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         """_summary_
 
         Args:
@@ -143,7 +143,7 @@ class Circle:
 
     vdc: Vdcorput
 
-    def __init__(self, base: int):
+    def __init__(self, base: int) -> None:
         """_summary_
 
         Args:
@@ -161,7 +161,7 @@ class Circle:
         return [sin(theta), cos(theta)]
 
     # [allow(dead_code)]
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         """_summary_
 
         Args:
@@ -186,7 +186,7 @@ class Sphere:
     vdc: Vdcorput
     cirgen: Circle
 
-    def __init__(self, base: List[int]):
+    def __init__(self, base: List[int]) -> None:
         """_summary_
 
         Args:
@@ -207,7 +207,7 @@ class Sphere:
         return [sinphi * c, sinphi * s, cosphi]
 
     # [allow(dead_code)]
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         """_summary_
 
         Args:
@@ -235,7 +235,7 @@ class Sphere3Hopf:
     vdc1: Vdcorput
     vdc2: Vdcorput
 
-    def __init__(self, base: List[int]):
+    def __init__(self, base: List[int]) -> None:
         """_summary_
 
         Args:
@@ -263,7 +263,7 @@ class Sphere3Hopf:
             sin_eta * cos(phi + psy),
         ]
 
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         """_summary_
 
         Args:
