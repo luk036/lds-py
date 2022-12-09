@@ -14,14 +14,14 @@ def vdc(k: int, base: int) -> float:
     Returns:
         float: _description_
     """
-    vdc = 0.0
+    res = 0.0
     denom = 1.0
     while k != 0:
         denom *= base
         remainder = k % base
         k //= base
-        vdc += remainder / denom
-    return vdc
+        res += remainder / denom
+    return res
 
 
 class Vdcorput:
@@ -272,30 +272,6 @@ class Sphere3Hopf:
         self.vdc0.reseed(seed)
         self.vdc1.reseed(seed)
         self.vdc2.reseed(seed)
-
-
-if __name__ == "__main__":
-    base = [2, 3, 5, 7]
-
-    vgen = Vdcorput(2)
-    for _ in range(10):
-        print(vgen.pop())
-
-    cgen = Circle(2)
-    for _ in range(10):
-        print(cgen.pop())
-
-    hgen = Halton(base)
-    for _ in range(10):
-        print(hgen.pop())
-
-    sgen = Sphere(base)
-    for _ in range(10):
-        print(sgen.pop())
-
-    s3fgen = Sphere3Hopf(base)
-    for _ in range(10):
-        print(s3fgen.pop())
 
 
 # First 1000 prime numbers
