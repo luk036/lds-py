@@ -2,7 +2,7 @@ from functools import lru_cache
 from math import cos, sin, sqrt
 from typing import List
 
-import numexpr as ne
+# import numexpr as ne
 import numpy as np
 
 from .lds import Circle, Sphere, Vdcorput
@@ -117,7 +117,8 @@ def get_tp(n: int) -> np.ndarray:
     if n == 1:
         return NEG_COSINE
     tp_minus2 = get_tp(n - 2)  # NOQA
-    return ne.evaluate("((n - 1) * tp_minus2 + NEG_COSINE * SINE**(n - 1)) / n")
+    # return ne.evaluate("((n - 1) * tp_minus2 + NEG_COSINE * SINE**(n - 1)) / n")
+    return ((n - 1) * tp_minus2 + NEG_COSINE * SINE ** (n - 1)) / n
 
 
 class Sphere3:
