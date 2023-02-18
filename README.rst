@@ -29,7 +29,9 @@
 .. image:: https://readthedocs.org/projects/lds-py/badge/?version=latest
     :target: https://lds-py.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
-
+.. image:: https://codecov.io/gh/luk036/lds-py/branch/master/graph/badge.svg?token=7EvuzaWHMw 
+    :target: https://codecov.io/gh/luk036/lds-py
+ 
 ======
 lds-py
 ======
