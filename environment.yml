@@ -5,5 +5,3 @@ dependencies:
   - pytest
   - pytest-cov
   - pytest-benchmark
-  - numpy
-  - scipy
