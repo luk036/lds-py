@@ -43,6 +43,13 @@ lds-py
 A longer description of your project goes here...
 
 
+Used in
+=======
+
+sphere-n: https://github.com/luk036/sphere-n
+bairstow: https://github.com/luk036/bairstow
+
+
 .. _pyscaffold-notes:
 
 Note
