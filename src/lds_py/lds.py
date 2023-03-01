@@ -274,6 +274,47 @@ class Sphere3Hopf:
         self.vdc2.reseed(seed)
 
 
+class HaltonN:
+    """HaltonN sequence generator
+
+    Examples:
+        >>> hgen = HaltonN(3, [2, 3, 5])
+        >>> hgen.reseed(0)
+        >>> for _ in range(2):
+        ...     print(hgen.pop())
+        ...
+        [0.5, 0.3333333333333333, 0.2]
+        [0.25, 0.6666666666666666, 0.4]
+    """
+
+    vdcs: List[Vdcorput]
+
+    def __init__(self, n: int, base: List[int]) -> None:
+        """_summary_
+
+        Args:
+            base (List[int]): _description_
+        """
+        self.vdcs = [Vdcorput(base[i]) for i in range(n)]
+
+    def pop(self) -> List[float]:
+        """_summary_
+
+        Returns:
+            List[float]: _description_
+        """
+        return [vdc.pop() for vdc in self.vdcs]
+
+    def reseed(self, seed: int) -> None:
+        """_summary_
+
+        Args:
+            seed (int): _description_
+        """
+        for vdc in self.vdcs:
+            vdc.reseed(seed)
+
+
 # First 1000 prime numbers
 # [allow(dead_code)]
 PRIME_TABLE: List[int] = [
