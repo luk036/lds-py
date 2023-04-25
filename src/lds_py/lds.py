@@ -1,5 +1,5 @@
 from math import cos, pi, sin, sqrt
-from typing import List
+from typing import Sequence, List
 
 TWO_PI = 2.0 * pi
 
@@ -100,7 +100,7 @@ class Halton:
     vdc0: Vdcorput
     vdc1: Vdcorput
 
-    def __init__(self, base: List[int]) -> None:
+    def __init__(self, base: Sequence[int]) -> None:
         """_summary_
 
         Args:
@@ -186,7 +186,7 @@ class Sphere:
     vdc: Vdcorput
     cirgen: Circle
 
-    def __init__(self, base: List[int]) -> None:
+    def __init__(self, base: Sequence[int]) -> None:
         """_summary_
 
         Args:
@@ -235,7 +235,7 @@ class Sphere3Hopf:
     vdc1: Vdcorput
     vdc2: Vdcorput
 
-    def __init__(self, base: List[int]) -> None:
+    def __init__(self, base: Sequence[int]) -> None:
         """_summary_
 
         Args:
@@ -289,7 +289,7 @@ class HaltonN:
 
     vdcs: List[Vdcorput]
 
-    def __init__(self, n: int, base: List[int]) -> None:
+    def __init__(self, n: int, base: Sequence[int]) -> None:
         """_summary_
 
         Args:

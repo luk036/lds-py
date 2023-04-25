@@ -1,4 +1,4 @@
-from typing import List
+from typing import Sequence, List
 
 
 def vdc_i(k: int, base: int = 2, scale: int = 10) -> int:
@@ -24,7 +24,7 @@ def vdc_i(k: int, base: int = 2, scale: int = 10) -> int:
 
 
 class Vdcorput:
-    def __init__(self, base: int = 2, scale: int = 10):
+    def __init__(self, base: int = 2, scale: int = 10) -> None:
         """[summary]
 
         Args:
@@ -43,7 +43,7 @@ class Vdcorput:
         self._count += 1
         return vdc_i(self._count, self._base, self._scale)
 
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         self._count = seed
 
 
@@ -68,12 +68,12 @@ class Halton:
         [640, 810]
     """
 
-    def __init__(self, base: List[int], scale: List[int]):
+    def __init__(self, base: Sequence[int], scale: Sequence[int]) -> None:
         """[summary]
 
         Args:
-            base (List[int]): [description]
-            scale (List[int]): [description]
+            base (Sequence[int]): [description]
+            scale (Sequence[int]): [description]
         """
         self._vdc0 = Vdcorput(base[0], scale[0])
         self._vdc1 = Vdcorput(base[1], scale[1])
@@ -82,11 +82,11 @@ class Halton:
         """Get the next item
 
         Returns:
-            list(float):  the next item
+            List[int]:  the next item
         """
         return [self._vdc0.pop(), self._vdc1.pop()]
 
-    def reseed(self, seed: int):
+    def reseed(self, seed: int) -> None:
         """[summary]
 
         Args:
