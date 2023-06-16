@@ -23,7 +23,7 @@ def vdc_i(k: int, base: int = 2, scale: int = 10) -> int:
     return vdc
 
 
-class Vdcorput:
+class VdCorput:
     def __init__(self, base: int = 2, scale: int = 10) -> None:
         """[summary]
 
@@ -75,8 +75,8 @@ class Halton:
             base (Sequence[int]): [description]
             scale (Sequence[int]): [description]
         """
-        self._vdc0 = Vdcorput(base[0], scale[0])
-        self._vdc1 = Vdcorput(base[1], scale[1])
+        self._vdc0 = VdCorput(base[0], scale[0])
+        self._vdc1 = VdCorput(base[1], scale[1])
 
     def pop(self) -> List[int]:
         """Get the next item

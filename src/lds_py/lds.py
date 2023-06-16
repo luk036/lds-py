@@ -24,11 +24,11 @@ def vdc(k: int, base: int) -> float:
     return res
 
 
-class Vdcorput:
+class VdCorput:
     """Van der Corput sequence generator
 
     Examples:
-        >>> vgen = Vdcorput(2)
+        >>> vgen = VdCorput(2)
         >>> vgen.reseed(0)
         >>> for _ in range(10):
         ...     print(vgen.pop())
@@ -97,8 +97,8 @@ class Halton:
         [0.3125, 0.37037037037037035]
     """
 
-    vdc0: Vdcorput
-    vdc1: Vdcorput
+    vdc0: VdCorput
+    vdc1: VdCorput
 
     def __init__(self, base: Sequence[int]) -> None:
         """_summary_
@@ -106,8 +106,8 @@ class Halton:
         Args:
             base (List[int]): _description_
         """
-        self.vdc0 = Vdcorput(base[0])
-        self.vdc1 = Vdcorput(base[1])
+        self.vdc0 = VdCorput(base[0])
+        self.vdc1 = VdCorput(base[1])
 
     def pop(self) -> List[float]:
         """_summary_
@@ -141,7 +141,7 @@ class Circle:
         [1.0, 6.123233995736766e-17]
     """
 
-    vdc: Vdcorput
+    vdc: VdCorput
 
     def __init__(self, base: int) -> None:
         """_summary_
@@ -149,7 +149,7 @@ class Circle:
         Args:
             base (int): _description_
         """
-        self.vdc = Vdcorput(base)
+        self.vdc = VdCorput(base)
 
     def pop(self) -> List[float]:
         """_summary_
@@ -183,7 +183,7 @@ class Sphere:
         [-0.7499999999999997, -0.4330127018922197, -0.5]
     """
 
-    vdc: Vdcorput
+    vdc: VdCorput
     cirgen: Circle
 
     def __init__(self, base: Sequence[int]) -> None:
@@ -192,7 +192,7 @@ class Sphere:
         Args:
             base (List[int]): _description_
         """
-        self.vdc = Vdcorput(base[0])
+        self.vdc = VdCorput(base[0])
         self.cirgen = Circle(base[1])
 
     def pop(self) -> List[float]:
@@ -231,9 +231,9 @@ class Sphere3Hopf:
         [-0.3162277660168382, -0.547722557505166, 0.6708203932499367, 0.6708203932499367]
     """
 
-    vdc0: Vdcorput
-    vdc1: Vdcorput
-    vdc2: Vdcorput
+    vdc0: VdCorput
+    vdc1: VdCorput
+    vdc2: VdCorput
 
     def __init__(self, base: Sequence[int]) -> None:
         """_summary_
@@ -241,9 +241,9 @@ class Sphere3Hopf:
         Args:
             base (List[int]): _description_
         """
-        self.vdc0 = Vdcorput(base[0])
-        self.vdc1 = Vdcorput(base[1])
-        self.vdc2 = Vdcorput(base[2])
+        self.vdc0 = VdCorput(base[0])
+        self.vdc1 = VdCorput(base[1])
+        self.vdc2 = VdCorput(base[2])
 
     def pop(self) -> List[float]:
         """_summary_
@@ -287,7 +287,7 @@ class HaltonN:
         [0.25, 0.6666666666666666, 0.4]
     """
 
-    vdcs: List[Vdcorput]
+    vdcs: List[VdCorput]
 
     def __init__(self, n: int, base: Sequence[int]) -> None:
         """_summary_
@@ -295,7 +295,7 @@ class HaltonN:
         Args:
             base (List[int]): _description_
         """
-        self.vdcs = [Vdcorput(base[i]) for i in range(n)]
+        self.vdcs = [VdCorput(base[i]) for i in range(n)]
 
     def pop(self) -> List[float]:
         """_summary_
