@@ -8,7 +8,7 @@ def vdc(k: int, base: int = 2) -> float:
     """Van der Corput sequence
 
     The function `vdc` converts a given number `k` from base `base` to a floating point number.
-    
+
     :param k: The parameter `k` represents the number for which we want to calculate the van der Corput
     sequence value
     :type k: int
@@ -65,7 +65,7 @@ class VdCorput:
     def __init__(self, base: int = 2) -> None:
         """
         The function initializes an object with a base and scale value, and sets the count to 0.
-        
+
         :param base: The `base` parameter is an optional integer argument that specifies the base of the
         number system. By default, it is set to 2, which means the number system is binary (base 2).
         However, you can change the value of `base` to any other prime number to use a different, defaults to 2
@@ -145,7 +145,7 @@ class Halton:
         """
         The `__init__()` function is a constructor for the `Halton` class that initializes two `VdCorput`
         objects with the given bases.
-        
+
         :param base: The `base` parameter is a list of two integers. These integers are used as the bases
         for generating the Halton sequence. The first integer in the list is used as the base for generating
         the first component of the sequence, and the second integer is used as the base for generating the
@@ -215,16 +215,21 @@ class Circle:
 
     def pop(self) -> List[float]:
         """
-        The `pop()` function is used to generate the next value in the sequence.
-        For example, in the `VdCorput` class, `pop()` increments the count and
-        calculates the Van der Corput sequence value for that count and base. In
-        the `Halton` class, `pop()` returns the next point in the Halton sequence
-        as a `List[float; 2]`. Similarly, in the `Circle` class, `pop()`
-        returns the next point on the unit circle as a `List[float; 2]`. In
-        the `Sphere` class, `pop()` returns the next point on the unit sphere as a
-        `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
-        the next point on the 3-sphere using the Hopf fibration as a
-        `List[float; 4]`.
+            The `pop()` function is used to generate the next value in the sequence.
+            For example, in the `VdCorput` class, `pop()` increments the count and
+            calculates the Van der Corput sequence value for that count and base. In
+            the `Halton` class, `pop()` returns the next point in the Halton sequence
+            as a `List[float; 2]`. Similarly, in the `Circle` class, `pop()`
+            returns the next point on the unit circle as a `List[float; 2]`. In
+            the `Sphere` class, `pop()` returns the next point on the unit sphere as a
+            `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
+            the next point on the 3-sphere using the Hopf fibration as a
+            `List[float; 4]`.
+
+        Examples:
+            >>> cgen = Circle(2)
+            >>> cgen.pop()
+            [1.2246467991473532e-16, -1.0]
         """
         theta = self.vdc.pop() * TWO_PI  # map to [0, 2*pi]
         return [sin(theta), cos(theta)]
@@ -281,13 +286,17 @@ class Sphere:
         `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
         the next point on the 3-sphere using the Hopf fibration as a
         `List[float; 4]`.
+
+        Examples:
+            >>> sgen = Sphere([2, 3])
+            >>> sgen.pop()
+            [0.8660254037844387, -0.4999999999999998, 0.0]
         """
         cosphi = 2.0 * self.vdc.pop() - 1.0  # map to [-1, 1]
         sinphi = sqrt(1.0 - cosphi * cosphi)
         [c, s] = self.cirgen.pop()
         return [sinphi * c, sinphi * s, cosphi]
 
-    # [allow(dead_code)]
     def reseed(self, seed: int) -> None:
         """reseed
 
@@ -343,6 +352,11 @@ class Sphere3Hopf:
         `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
         the next point on the 3-sphere using the Hopf fibration as a
         `List[float; 4]`.
+
+        Examples:
+            >>> sgen = Sphere3Hopf([2, 3, 5])
+            >>> sgen.pop()
+            [-0.22360679774997885, 0.3872983346207417, 0.4472135954999573, 0.4472135954999573]
         """
         phi = self.vdc0.pop() * TWO_PI  # map to [0, 2*pi]
         psy = self.vdc1.pop() * TWO_PI  # map to [0, 2*pi]
