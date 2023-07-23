@@ -4,18 +4,22 @@ from typing import Sequence, List
 TWO_PI = 2.0 * pi
 
 
-def vdc(k: int, base: int) -> float:
+def vdc(k: int, base: int = 2) -> float:
     """Van der Corput sequence
 
-    The `vdc` function is calculating the Van der Corput sequence value for a
-    given index `k` and base `base`. It returns a `float` value.
+    The function `vdc` converts a given number `k` from base `base` to a floating point number.
+    
+    :param k: The parameter `k` represents the number for which we want to calculate the van der Corput
+    sequence value
+    :type k: int
+    :param base: The `base` parameter represents the base of the number system being used. In this case,
+    it is set to 2, which means the number system is binary (base 2), defaults to 2
+    :type base: int (optional)
+    :return: The function `vdc` returns a floating point value.
 
-    Args:
-        k (int): _description_
-        base (int): _description_
-
-    Returns:
-        float: _description_
+    Examples:
+        >>> vdc(11, 2)
+        0.8125
     """
     res = 0.0
     denom = 1.0
@@ -59,28 +63,34 @@ class VdCorput:
     base: int
 
     def __init__(self, base: int = 2) -> None:
-        """Construct a new VdCorput object
-
-        The `__init__()` constructor is initializing a `VdCorput` object
-        with a given base. The base is used to generate the Van der Corput
-        sequence.
-
-        Args:
-            base (int, optional): _description_. Defaults to 2.
+        """
+        The function initializes an object with a base and scale value, and sets the count to 0.
+        
+        :param base: The `base` parameter is an optional integer argument that specifies the base of the
+        number system. By default, it is set to 2, which means the number system is binary (base 2).
+        However, you can change the value of `base` to any other prime number to use a different, defaults to 2
+        :type base: int (optional)
         """
         self.count = 0
         self.base = base
 
     def pop(self) -> float:
-        """pop
+        """
+        The `pop()` function is used to generate the next value in the sequence.
+        For example, in the `VdCorput` class, `pop()` increments the count and
+        calculates the Van der Corput sequence value for that count and base. In
+        the `Halton` class, `pop()` returns the next point in the Halton sequence
+        as a `List[float; 2]`. Similarly, in the `Circle` class, `pop()`
+        returns the next point on the unit circle as a `List[float; 2]`. In
+        the `Sphere` class, `pop()` returns the next point on the unit sphere as a
+        `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
+        the next point on the 3-sphere using the Hopf fibration as a
+        `List[float; 4]`.
 
-        The `pop()` function is a member function of the `VdCorput` class
-        It returns a `float` value. This function is used to generate the
-        next value in the Van der Corput sequence. It increments the count and
-        calculates the Van der Corput sequence value for that count and base.
-
-        Returns:
-            float: _description_
+        Examples:
+            >>> vgen = VdCorput(2)
+            >>> vgen.pop()
+            0.5
         """
         self.count += 1
         return vdc(self.count, self.base)
@@ -132,28 +142,46 @@ class Halton:
     vdc1: VdCorput
 
     def __init__(self, base: Sequence[int]) -> None:
-        """Construct a new Halton object
-
-        The `__init__()` is a constructor for the `Halton` class.
-        It takes two parameters `base0` and `base1`, which are
-        used as the bases for generating the Halton sequence.
-
-        Args:
-            base (List[int]): _description_
+        """
+        The `__init__()` function is a constructor for the `Halton` class that initializes two `VdCorput`
+        objects with the given bases.
+        
+        :param base: The `base` parameter is a list of two integers. These integers are used as the bases
+        for generating the Halton sequence. The first integer in the list is used as the base for generating
+        the first component of the sequence, and the second integer is used as the base for generating the
+        second component
+        :type base: Sequence[int]
         """
         self.vdc0 = VdCorput(base[0])
         self.vdc1 = VdCorput(base[1])
 
     def pop(self) -> List[float]:
-        """_summary_
+        """
+        The `pop()` function is used to generate the next value in the sequence.
+        For example, in the `VdCorput` class, `pop()` increments the count and
+        calculates the Van der Corput sequence value for that count and base. In
+        the `Halton` class, `pop()` returns the next point in the Halton sequence
+        as a `List[float; 2]`. Similarly, in the `Circle` class, `pop()`
+        returns the next point on the unit circle as a `List[float; 2]`. In
+        the `Sphere` class, `pop()` returns the next point on the unit sphere as a
+        `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
+        the next point on the 3-sphere using the Hopf fibration as a
+        `List[float; 4]`.
 
-        Returns:
-            List[float]: _description_
+        Examples:
+            >>> hgen = Halton([2, 3])
+            >>> hgen.pop()
+            [0.5, 0.3333333333333333]
         """
         return [self.vdc0.pop(), self.vdc1.pop()]
 
     def reseed(self, seed: int) -> None:
-        """_summary_
+        """reseed
+
+        The `reseed(size_t seed)` function is used to reset the state of the
+        sequence generator to a specific seed value. This allows the sequence
+        generator to start generating the sequence from the beginning, or from
+        a specific point in the sequence, depending on the value of the seed.
 
         Args:
             seed (int): _description_
@@ -186,17 +214,29 @@ class Circle:
         self.vdc = VdCorput(base)
 
     def pop(self) -> List[float]:
-        """_summary_
-
-        Returns:
-            List[float]: _description_
+        """
+        The `pop()` function is used to generate the next value in the sequence.
+        For example, in the `VdCorput` class, `pop()` increments the count and
+        calculates the Van der Corput sequence value for that count and base. In
+        the `Halton` class, `pop()` returns the next point in the Halton sequence
+        as a `List[float; 2]`. Similarly, in the `Circle` class, `pop()`
+        returns the next point on the unit circle as a `List[float; 2]`. In
+        the `Sphere` class, `pop()` returns the next point on the unit sphere as a
+        `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
+        the next point on the 3-sphere using the Hopf fibration as a
+        `List[float; 4]`.
         """
         theta = self.vdc.pop() * TWO_PI  # map to [0, 2*pi]
         return [sin(theta), cos(theta)]
 
     # [allow(dead_code)]
     def reseed(self, seed: int) -> None:
-        """_summary_
+        """reseed
+
+        The `reseed(size_t seed)` function is used to reset the state of the
+        sequence generator to a specific seed value. This allows the sequence
+        generator to start generating the sequence from the beginning, or from
+        a specific point in the sequence, depending on the value of the seed.
 
         Args:
             seed (int): _description_
@@ -230,10 +270,17 @@ class Sphere:
         self.cirgen = Circle(base[1])
 
     def pop(self) -> List[float]:
-        """_summary_
-
-        Returns:
-            List[float]: _description_
+        """
+        The `pop()` function is used to generate the next value in the sequence.
+        For example, in the `VdCorput` class, `pop()` increments the count and
+        calculates the Van der Corput sequence value for that count and base. In
+        the `Halton` class, `pop()` returns the next point in the Halton sequence
+        as a `List[float; 2]`. Similarly, in the `Circle` class, `pop()`
+        returns the next point on the unit circle as a `List[float; 2]`. In
+        the `Sphere` class, `pop()` returns the next point on the unit sphere as a
+        `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
+        the next point on the 3-sphere using the Hopf fibration as a
+        `List[float; 4]`.
         """
         cosphi = 2.0 * self.vdc.pop() - 1.0  # map to [-1, 1]
         sinphi = sqrt(1.0 - cosphi * cosphi)
@@ -242,7 +289,12 @@ class Sphere:
 
     # [allow(dead_code)]
     def reseed(self, seed: int) -> None:
-        """_summary_
+        """reseed
+
+        The `reseed(size_t seed)` function is used to reset the state of the
+        sequence generator to a specific seed value. This allows the sequence
+        generator to start generating the sequence from the beginning, or from
+        a specific point in the sequence, depending on the value of the seed.
 
         Args:
             seed (int): _description_
@@ -280,10 +332,17 @@ class Sphere3Hopf:
         self.vdc2 = VdCorput(base[2])
 
     def pop(self) -> List[float]:
-        """_summary_
-
-        Returns:
-            List[float]: _description_
+        """
+        The `pop()` function is used to generate the next value in the sequence.
+        For example, in the `VdCorput` class, `pop()` increments the count and
+        calculates the Van der Corput sequence value for that count and base. In
+        the `Halton` class, `pop()` returns the next point in the Halton sequence
+        as a `List[float; 2]`. Similarly, in the `Circle` class, `pop()`
+        returns the next point on the unit circle as a `List[float; 2]`. In
+        the `Sphere` class, `pop()` returns the next point on the unit sphere as a
+        `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
+        the next point on the 3-sphere using the Hopf fibration as a
+        `List[float; 4]`.
         """
         phi = self.vdc0.pop() * TWO_PI  # map to [0, 2*pi]
         psy = self.vdc1.pop() * TWO_PI  # map to [0, 2*pi]
@@ -298,7 +357,12 @@ class Sphere3Hopf:
         ]
 
     def reseed(self, seed: int) -> None:
-        """_summary_
+        """reseed
+
+        The `reseed(size_t seed)` function is used to reset the state of the
+        sequence generator to a specific seed value. This allows the sequence
+        generator to start generating the sequence from the beginning, or from
+        a specific point in the sequence, depending on the value of the seed.
 
         Args:
             seed (int): _description_
@@ -332,15 +396,27 @@ class HaltonN:
         self.vdcs = [VdCorput(base[i]) for i in range(n)]
 
     def pop(self) -> List[float]:
-        """_summary_
-
-        Returns:
-            List[float]: _description_
+        """
+        The `pop()` function is used to generate the next value in the sequence.
+        For example, in the `VdCorput` class, `pop()` increments the count and
+        calculates the Van der Corput sequence value for that count and base. In
+        the `Halton` class, `pop()` returns the next point in the Halton sequence
+        as a `List[float; 2]`. Similarly, in the `Circle` class, `pop()`
+        returns the next point on the unit circle as a `List[float; 2]`. In
+        the `Sphere` class, `pop()` returns the next point on the unit sphere as a
+        `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
+        the next point on the 3-sphere using the Hopf fibration as a
+        `List[float; 4]`.
         """
         return [vdc.pop() for vdc in self.vdcs]
 
     def reseed(self, seed: int) -> None:
-        """_summary_
+        """reseed
+
+        The `reseed(size_t seed)` function is used to reset the state of the
+        sequence generator to a specific seed value. This allows the sequence
+        generator to start generating the sequence from the beginning, or from
+        a specific point in the sequence, depending on the value of the seed.
 
         Args:
             seed (int): _description_
