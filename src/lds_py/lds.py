@@ -421,6 +421,11 @@ class HaltonN:
         `List[float; 3]`. And in the `Sphere3Hopf` class, `pop()` returns
         the next point on the 3-sphere using the Hopf fibration as a
         `List[float; 4]`.
+
+        Examples:
+            >>> hgen = HaltonN(3, [2, 3, 5])
+            >>> hgen.pop()
+            [0.5, 0.3333333333333333, 0.2]
         """
         return [vdc.pop() for vdc in self.vdcs]
 

@@ -17,6 +17,10 @@ def vdc_i(k: int, base: int = 2, scale: int = 10) -> int:
     raised to calculate the factor, defaults to 10
     :type scale: int (optional)
     :return: The function `vdc_i` returns an integer value.
+
+    Examples:
+        >>> vdc_i(1, 2, 10)
+        512
     """
     vdc: int = 0
     factor: int = base**scale
@@ -30,6 +34,7 @@ def vdc_i(k: int, base: int = 2, scale: int = 10) -> int:
 
 # The `VdCorput` class initializes an object with a base and scale value, and sets the count to 0.
 class VdCorput:
+
     def __init__(self, base: int = 2, scale: int = 10) -> None:
         """
         The function initializes an object with a base and scale value, and sets the count to 0.
@@ -52,6 +57,11 @@ class VdCorput:
         The `pop()` function is a member function of the `VdCorput` class that increments the count and
         calculates the next value in the Van der Corput sequence.
         :return: The `pop()` function is returning an `int` value.
+
+        Examples:
+            >>> vdc = VdCorput(2, 10)
+            >>> vdc.pop()
+            512
         """
         self._count += 1
         return vdc_i(self._count, self._base, self._scale)
@@ -66,6 +76,12 @@ class VdCorput:
 
         Args:
             seed (int): _description_
+
+        Examples:
+            >>> vdc = VdCorput(2, 10)
+            >>> vdc.reseed(0)
+            >>> vdc.pop()
+            512
         """
         self._count = seed
 
