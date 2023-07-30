@@ -31,7 +31,10 @@
     :alt: Documentation Status
 .. image:: https://codecov.io/gh/luk036/lds-py/branch/master/graph/badge.svg?token=7EvuzaWHMw 
     :target: https://codecov.io/gh/luk036/lds-py
- 
+.. image:: https://api.codacy.com/project/badge/Grade/6d654f5a565b444e8f34f1236ba5f21d
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/gh/luk036/lds-py?utm_source=github.com&utm_medium=referral&utm_content=luk036/lds-py&utm_campaign=Badge_Grade
+
 ======
 lds-py
 ======
