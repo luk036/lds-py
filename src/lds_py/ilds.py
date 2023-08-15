@@ -34,7 +34,6 @@ def vdc_i(k: int, base: int = 2, scale: int = 10) -> int:
 
 # The `VdCorput` class initializes an object with a base and scale value, and sets the count to 0.
 class VdCorput:
-
     def __init__(self, base: int = 2, scale: int = 10) -> None:
         """
         The function initializes an object with a base and scale value, and sets the count to 0.
